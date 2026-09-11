@@ -101,26 +101,28 @@ body.dark::before {
   to { transform: translate(var(--move-x),var(--move-y)); opacity: .9; }
 }
 
-.sakura-petal {
-  position: absolute;
-  top: -40px;
+/* 雪花 CSS 效果 */
+.snowflake {
+  position: fixed;
+  top: -30px;
   left: var(--left);
-  width: var(--size);
-  height: calc(var(--size) * .7);
-  border-radius: 100% 0 100% 0;
-  background: linear-gradient(135deg, #fff, #ffafd3);
-  opacity: .8;
-  filter: drop-shadow(0 3px 5px rgba(150,70,120,.15));
-  animation: fall var(--duration) linear infinite;
+  font-size: var(--size);
+  color: white;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 9999;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,.9));
+  animation: snowFall var(--duration) linear infinite;
   animation-delay: var(--delay);
 }
 
-@keyframes fall {
-  0% { transform: translate3d(0,-50px,0) rotate(0deg); }
-  25% { transform: translate3d(35px,25vh,0) rotate(90deg); }
-  50% { transform: translate3d(-25px,50vh,0) rotate(180deg); }
-  75% { transform: translate3d(45px,75vh,0) rotate(270deg); }
-  100% { transform: translate3d(-20px,110vh,0) rotate(360deg); }
+@keyframes snowFall {
+  0% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
 }
 
 .glow {
@@ -485,27 +487,21 @@ body.dark .loader-text { color: #c9b9d8; }
 <main>
   <section class="profile">
     <div class="avatar-wrap">
-      <!-- 把下面的圖片網址換成你的頭像 -->
       <img class="avatar" src="https://placehold.co/300x300/e9d5ff/6d28d9?text=YUI" alt="頭像">
       <div class="avatar-ring"></div>
     </div>
 
-    <!-- 修改這裡：你的名字 -->
     <h1>Hanamiya Yui</h1>
 
-    <!-- 修改這裡：你的副標題 -->
     <div class="subtitle">VTuber · Streamer · Content Creator</div>
 
-    <!-- 修改這裡：你的介紹 -->
     <div class="bio">
-      歡迎來到我的小世界 🌸<br>
-      在這裡可以找到我的所有平台與最新消息。
+      歡迎來到我的小世界 ❄<br>
     </div>
   </section>
 
   <section class="links">
 
-    <!-- 新增連結：複製整個 link-card 區塊即可 -->
     <a class="link-card" href="https://www.youtube.com/@HanamiyaYui" target="_blank" rel="noopener">
       <div class="link-icon">🎥</div>
       <div class="link-info">
@@ -515,17 +511,16 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-arrow">›</div>
     </a>
 
-    <a class="link-card" href="https://www.twitch.tv/" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.twitch.tv/hanamiya_yui" target="_blank" rel="noopener">
       <div class="link-icon">🎮</div>
       <div class="link-info">
         <span class="link-title">Twitch</span>
-        <span class="link-desc">來看我的實況吧！</span>
+        <span class="link-desc">來一起挂台！</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
 
-
-    <a class="link-card" href="https://www.instagram.com/" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.instagram.com/hanamiyayui_vtuber/" target="_blank" rel="noopener">
       <div class="link-icon">📷</div>
       <div class="link-info">
         <span class="link-title">Instagram</span>
@@ -534,7 +529,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-arrow">›</div>
     </a>
 
-    <a class="link-card" href="https://x.com/" target="_blank" rel="noopener">
+    <a class="link-card" href="https://x.com/Hana_miya_Yui" target="_blank" rel="noopener">
       <div class="link-icon">🐦</div>
       <div class="link-info">
         <span class="link-title">X / Twitter</span>
@@ -543,11 +538,20 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-arrow">›</div>
     </a>
 
-    <a class="link-card" href="https://discord.com/" target="_blank" rel="noopener">
+    <a class="link-card" href="https://discord.com/invite/HpakuEecqe" target="_blank" rel="noopener">
       <div class="link-icon">💬</div>
       <div class="link-info">
         <span class="link-title">Discord</span>
         <span class="link-desc">加入我的社群</span>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a class="link-card" href="https://ganknow.com/%E8%8F%AF%E5%AE%AE%E7%B5%90hanamiyayui/tip" target="_blank" rel="noopener">
+      <div class="link-icon">🎁</div>
+      <div class="link-info">
+        <span class="link-title">贊助我</span>
+        <span class="link-desc">支持我的創作活動</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -560,10 +564,9 @@ body.dark .loader-text { color: #c9b9d8; }
     <a class="social" href="https://discord.com/" target="_blank" rel="noopener">♣</a>
   </div>
 
-  <div class="footer">MADE WITH ♡ · HANAMIYA YUI</div>
+  <div class="footer">MADE WITH 🎀 · HANAMIYA YUI</div>
 </main>
 
-<!-- 背景音樂：請把你的音樂檔案命名為 bgm.mp3，放在同一個資料夾 -->
 <audio id="bgm" loop>
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
@@ -658,29 +661,21 @@ for (let i = 0; i < 35; i++) {
 }
 
 /* =========================
-   6. 櫻花花瓣
+   6. 飄落雪花效果
 ========================= */
-const sakura = document.getElementById('sakura');
+for (let i = 0; i < 30; i++) {
+  const flake = document.createElement('div');
+  flake.className = 'snowflake';
+  flake.textContent = '❄';
 
-for (let i = 0; i < 18; i++) {
-  const petal = document.createElement('div');
-  petal.className = 'sakura-petal';
+  flake.style.setProperty('--left', Math.random() * 100 + '%');
+  flake.style.setProperty('--size', (Math.random() * 12 + 8) + 'px');
+  flake.style.setProperty('--duration', (Math.random() * 8 + 7) + 's');
+  flake.style.setProperty('--delay', (Math.random() * -15) + 's');
 
-  petal.style.setProperty('--left', Math.random() * 100 + '%');
-  petal.style.setProperty('--size', (Math.random() * 12 + 9) + 'px');
-  petal.style.setProperty('--duration', (Math.random() * 8 + 8) + 's');
-  petal.style.setProperty('--delay', (Math.random() * -16) + 's');
-
-  sakura.appendChild(petal);
+  document.body.appendChild(flake);
 }
 </script>
 
 </body>
-</html><a class="link-card" href="https://ganknow.com/%E8%8F%AF%E5%AE%AE%E7%B5%90hanamiyayui/tip" target="_blank" rel="noopener">
-  <div class="link-icon">🎁</div>
-  <div class="link-info">
-    <span class="link-title">贊助我</span>
-    <span class="link-desc">支持我的創作活動</span>
-  </div>
-  <div class="link-arrow">›</div>
-</a>
+</html>
