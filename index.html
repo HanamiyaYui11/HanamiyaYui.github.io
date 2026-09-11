@@ -101,7 +101,6 @@ body.dark::before {
   to { transform: translate(var(--move-x),var(--move-y)); opacity: .9; }
 }
 
-/* 雪花 CSS 效果 */
 .snowflake {
   position: fixed;
   top: -30px;
@@ -138,7 +137,7 @@ body.dark::before {
   mix-blend-mode: screen;
 }
 
- {
+.topbar {
   position: fixed;
   top: 22px;
   left: 22px;
@@ -146,7 +145,7 @@ body.dark::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
- z-index: 1000;
+  z-index: 1000;
   pointer-events: none;
 }
 
@@ -420,6 +419,7 @@ body.dark #loader { background: #17152e; }
   visibility: hidden;
   pointer-events: none;
 }
+
 .loader-content { text-align: center; }
 
 .loader-orb {
@@ -559,9 +559,9 @@ body.dark .loader-text { color: #c9b9d8; }
   </section>
 
   <div class="socials">
-    <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener">▶</a>
-    <a class="social" href="https://x.com/" target="_blank" rel="noopener">𝕏</a>
-    <a class="social" href="https://discord.com/" target="_blank" rel="noopener">♣</a>
+    <a class="social" href="https://www.youtube.com/@HanamiyaYui" target="_blank" rel="noopener">▶</a>
+    <a class="social" href="https://x.com/Hana_miya_Yui" target="_blank" rel="noopener">𝕏</a>
+    <a class="social" href="https://discord.com/invite/HpakuEecqe" target="_blank" rel="noopener">♣</a>
   </div>
 
   <div class="footer">MADE WITH 🎀 · HANAMIYA YUI</div>
@@ -572,18 +572,14 @@ body.dark .loader-text { color: #c9b9d8; }
 </audio>
 
 <script>
-/* =========================
-   1. 載入動畫
-========================= */
+/* 1. 載入動畫 */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
   }, 700);
 });
 
-/* =========================
-   2. 深色／淺色模式
-========================= */
+/* 2. 深色／淺色模式 */
 const themeBtn = document.getElementById('themeBtn');
 
 if (localStorage.getItem('theme') === 'dark') {
@@ -598,9 +594,7 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-/* =========================
-   3. 背景音樂
-========================= */
+/* 3. 背景音樂 */
 const bgm = document.getElementById('bgm');
 const musicBtn = document.getElementById('musicBtn');
 
@@ -617,9 +611,7 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
-/* =========================
-   4. 滑鼠跟隨發光
-========================= */
+/* 4. 滑鼠跟隨發光 */
 const glow = document.getElementById('glow');
 
 window.addEventListener('pointermove', (e) => {
@@ -635,9 +627,7 @@ window.addEventListener('pointerenter', () => {
   glow.style.opacity = '1';
 });
 
-/* =========================
-   5. 浮動粒子
-========================= */
+/* 5. 浮動粒子 */
 const particles = document.getElementById('particles');
 
 for (let i = 0; i < 35; i++) {
@@ -655,9 +645,7 @@ for (let i = 0; i < 35; i++) {
   particles.appendChild(p);
 }
 
-/* =========================
-   6. 飄落雪花效果
-========================= */
+/* 6. 飄落雪花效果 */
 for (let i = 0; i < 30; i++) {
   const flake = document.createElement('div');
   flake.className = 'snowflake';
