@@ -362,6 +362,24 @@ h1 {
   transition: transform .3s;
 }
 
+  /* 連結卡片滑鼠移上去時放大並向上浮起 */
+.link-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(244, 114, 182, 0.25);
+}
+
+/* 右上角按鈕 hover 放大效果 */
+.action-btn {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: scale(1.15);
+}
 .link-card:hover .link-arrow {
   transform: translateX(4px);
   opacity: .9;
