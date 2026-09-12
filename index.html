@@ -572,11 +572,11 @@ body.dark .loader-text { color: #c9b9d8; }
 </audio>
 
 <script>
-/* 1. 載入動畫 */
+/* 1. 載入動畫（已將停留時間改為 2 秒） */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
-  }, 700);
+  }, 2000); // 💡 2000 代表 2 秒（若想更久可改成 3000 表示 3 秒）
 });
 
 /* 2. 深色／淺色模式 */
@@ -597,6 +597,9 @@ themeBtn.addEventListener('click', () => {
 /* 3. 背景音樂 */
 const bgm = document.getElementById('bgm');
 const musicBtn = document.getElementById('musicBtn');
+
+// 控制初始音量為 20%
+bgm.volume = 0.2;
 
 musicBtn.addEventListener('click', () => {
   if (bgm.paused) {
@@ -659,6 +662,5 @@ for (let i = 0; i < 30; i++) {
   document.body.appendChild(flake);
 }
 </script>
-
 </body>
 </html>
