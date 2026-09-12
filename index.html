@@ -465,10 +465,21 @@ body.dark .loader-text { color: #c9b9d8; }
 
 <body>
 
+<!-- 載入畫面 -->
 <div id="loader">
   <div class="loader-content">
-    <div class="loader-orb"></div>
-    <div class="loader-text">WELCOME TO MY WORLD</div>
+    <!-- 頭像（若沒有可刪除此行） -->
+    <img src="avatar.jpg" alt="華宮結" class="loader-avatar">
+    
+    <!-- 名字與稱號 -->
+    <h2 class="loader-name">華宮結 <span>/ Hanamiya Yui</span></h2>
+    
+    <!-- 自我介紹短文 -->
+    <p class="loader-bio">✨ 這裡是來自馬來西亞的個人勢Vtuber~感謝你願意點進來❤✨</p>
+    
+    <!-- 讀條動畫轉圈圈 -->
+    <div class="spinner"></div>
+    <span class="loader-text">頁面載入中...</span>
   </div>
 </div>
 
@@ -491,7 +502,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="avatar-ring"></div>
     </div>
 
-    <h1>Hanamiya Yui</h1>
+    <h1>華宮結 Hanamiya Yui</h1>
 
     <div class="subtitle">VTuber · Streamer · Content Creator</div>
 
@@ -533,7 +544,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-icon">🐦</div>
       <div class="link-info">
         <span class="link-title">X / Twitter</span>
-        <span class="link-desc">最新消息與閒聊</span>
+        <span class="link-desc">最新消息與日常</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -576,7 +587,7 @@ body.dark .loader-text { color: #c9b9d8; }
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
-  }, 2000); // 💡 2000 代表 2 秒（若想更久可改成 3000 表示 3 秒）
+  }, 1500); // 💡 2000 代表 2 秒（若想更久可改成 3000 表示 3 秒）
 });
 
 /* 2. 深色／淺色模式 */
