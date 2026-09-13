@@ -146,7 +146,6 @@ main {
 }
 @keyframes ringPulse { 0%,100% { transform: scale(1); opacity: .5; } 50% { transform: scale(1.06); opacity: 1; } }
 
-/* 預設隱藏 LIVE 標籤 (若要顯示改為 display: flex;) */
 .live-badge {
   display: none; 
   position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
@@ -161,7 +160,6 @@ h1 { margin: 0; font-size: clamp(27px, 6vw, 36px); letter-spacing: .02em; font-w
 .subtitle { margin: 9px 0 0; color: var(--muted); font-size: 14px; }
 .bio { margin: 12px auto 20px; color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 360px; }
 
-/* 最新公告 Banner */
 .banner {
   margin: 0 0 24px; padding: 14px 18px; border-radius: 20px;
   background: linear-gradient(135deg, rgba(255,182,193,0.4), rgba(192,132,252,0.4));
@@ -276,7 +274,6 @@ h1 { margin: 0; font-size: clamp(27px, 6vw, 36px); letter-spacing: .02em; font-w
     <div class="bio" id="bioText">歡迎來到我的小世界 ❄<br></div>
   </section>
 
-  <!-- 最新公告 Banner（可以隨時修改標題與連結） -->
   <a class="banner" href="https://www.youtube.com/@HanamiyaYui" target="_blank" rel="noopener">
     <div>
       <span class="banner-tag" id="bannerTag">最新消息</span>
@@ -303,15 +300,6 @@ h1 { margin: 0; font-size: clamp(27px, 6vw, 36px); letter-spacing: .02em; font-w
       </div>
       <div class="link-arrow">›</div>
     </a>
-
-    <div class="link-card" id="copyEmailBtn">
-      <div class="link-icon">✉️</div>
-      <div class="link-info">
-        <span class="link-title" id="emailTitle">商務合作 Contact</span>
-        <span class="link-desc" id="emailDesc">點擊複製聯絡信箱</span>
-      </div>
-      <div class="link-arrow">📋</div>
-    </div>
 
     <a class="link-card" href="https://www.instagram.com/hanamiyayui_vtuber/" target="_blank" rel="noopener">
       <div class="link-icon">📷</div>
@@ -348,6 +336,26 @@ h1 { margin: 0; font-size: clamp(27px, 6vw, 36px); letter-spacing: .02em; font-w
       </div>
       <div class="link-arrow">›</div>
     </a>
+
+    <!-- 新增歌單列表卡片 -->
+    <a class="link-card" href="https://myviki.com/songlist/@hanamiya_yui" target="_blank" rel="noopener">
+      <div class="link-icon">🎵</div>
+      <div class="link-info">
+        <span class="link-title" id="songlistTitle">VTuber 歌單</span>
+        <span class="link-desc" id="songlistDesc">查看我的點歌單與歌曲庫</span>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <!-- 商務合作 Email 卡片（保持在最下方） -->
+    <div class="link-card" id="copyEmailBtn">
+      <div class="link-icon">✉️</div>
+      <div class="link-info">
+        <span class="link-title" id="emailTitle">商務合作 Contact</span>
+        <span class="link-desc" id="emailDesc">點擊複製聯絡信箱</span>
+      </div>
+      <div class="link-arrow">📋</div>
+    </div>
   </section>
 
   <div class="socials">
@@ -378,6 +386,8 @@ const translations = {
     dcDesc: '加入我的社群',
     donateTitle: '贊助我',
     donateDesc: '支持我的創作活動',
+    songlistTitle: 'VTuber 歌單',
+    songlistDesc: '查看我的點歌單與歌曲庫',
     copiedMsg: '已複製 Email 到剪貼簿！',
     eggMsg: ' (ฅ´ω`ฅ) 被你發現隱藏彩蛋了！'
   },
@@ -396,6 +406,8 @@ const translations = {
     dcDesc: 'Join my Discord community',
     donateTitle: 'Donate',
     donateDesc: 'Support my content creation',
+    songlistTitle: 'Song List',
+    songlistDesc: 'Check out my requestable songs',
     copiedMsg: 'Email copied to clipboard!',
     eggMsg: ' (ฅ´ω`ฅ) You found the secret Easter Egg!'
   },
@@ -414,6 +426,8 @@ const translations = {
     dcDesc: 'コミュニティに参加する',
     donateTitle: '活動を応援',
     donateDesc: '活動のサポートはこちら',
+    songlistTitle: '歌歌リスト',
+    songlistDesc: '歌枠の曲目チェックはこちら',
     copiedMsg: 'メールアドレスをコピーしました！',
     eggMsg: ' (ฅ´ω`ฅ) 隠し要素を見つけたね！'
   }
@@ -438,6 +452,8 @@ function updateLanguage(lang) {
   document.getElementById('dcDesc').textContent = t.dcDesc;
   document.getElementById('donateTitle').textContent = t.donateTitle;
   document.getElementById('donateDesc').textContent = t.donateDesc;
+  document.getElementById('songlistTitle').textContent = t.songlistTitle;
+  document.getElementById('songlistDesc').textContent = t.songlistDesc;
 
   const langLabels = { zh: '🌐 繁', en: '🌐 EN', ja: '🌐 JP' };
   document.getElementById('langBtn').textContent = langLabels[lang];
@@ -463,7 +479,7 @@ function showToast(msg) {
 }
 
 document.getElementById('copyEmailBtn').addEventListener('click', () => {
-  const email = 'your_email@example.com'; // 👈 記得改成你的真實 Email
+  const email = 'hanamiya.yui.vtuber@gmail.com';
   navigator.clipboard.writeText(email).then(() => {
     showToast(translations[langOrder[currentLangIndex]].copiedMsg);
   });
