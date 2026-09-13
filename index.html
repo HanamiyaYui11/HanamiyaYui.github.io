@@ -116,12 +116,8 @@ body.dark::before {
 }
 
 @keyframes snowFall {
-  0% {
-    transform: translateY(-30px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-  }
+  0% { transform: translateY(-30px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
 }
 
 .glow {
@@ -174,13 +170,11 @@ body.dark::before {
   -webkit-backdrop-filter: blur(20px);
   color: var(--text);
   cursor: pointer;
-  font-size: 17px;
-  transition: transform .25s, background .25s;
-}
-
-.icon-btn:hover {
-  transform: translateY(-3px) rotate(5deg);
-  background: var(--glass-strong);
+  font-size: 14px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  transition: transform .25s ease, background .25s ease;
 }
 
 main {
@@ -277,8 +271,7 @@ h1 {
   text-decoration: none;
   overflow: hidden;
   isolation: isolate;
-  transition: transform .3s cubic-bezier(.2,.8,.2,1),
-              background .3s, box-shadow .3s;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), background .3s, box-shadow .3s, border-color .3s;
   animation: linkIn .7s cubic-bezier(.2,.8,.2,1) both;
 }
 
@@ -314,11 +307,9 @@ h1 {
 }
 
 .link-card:hover {
-  transform: translateY(-5px) scale(1.015);
+  transform: translateY(-4px) scale(1.03);
   background: var(--glass-strong);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.5),
-    0 18px 42px var(--shadow);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 16px 35px rgba(244, 114, 182, 0.3);
 }
 
 .link-card:active {
@@ -362,23 +353,12 @@ h1 {
   transition: transform .3s;
 }
 
- /* 連結卡片 Hover 放大與陰影效果 */
-.link-card {
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), background 0.3s, box-shadow 0.3s, border-color 0.3s;
-}
-
-.link-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  background: var(--glass-strong);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 16px 35px rgba(244, 114, 182, 0.3);
-}
-
 .link-card:hover .link-arrow {
   transform: translateX(5px);
   opacity: 1;
 }
 
-/* 右上角按鈕 & 下方社群圖示 Hover 放大效果 */
+/* 右上角按鈕與社群圖示 Hover 動畫 */
 .icon-btn, .social {
   transition: transform 0.25s ease, background 0.25s ease;
 }
@@ -387,6 +367,7 @@ h1 {
   transform: translateY(-3px) scale(1.15);
   background: var(--glass-strong);
 }
+
 .socials {
   display: flex;
   justify-content: center;
@@ -406,12 +387,6 @@ h1 {
   color: var(--text);
   text-decoration: none;
   font-size: 17px;
-  transition: transform .25s, background .25s;
-}
-
-.social:hover {
-  transform: translateY(-4px);
-  background: var(--glass-strong);
 }
 
 .footer {
@@ -422,65 +397,8 @@ h1 {
   letter-spacing: .08em;
 }
 
+/* 載入畫面 */
 #loader {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
-  place-items: center;
-  background: #d9c7f5;
-  transition: opacity .8s, visibility .8s;
-}
-
-body.dark #loader { background: #17152e; }
-
-#loader.hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.loader-content { text-align: center; }
-
-.loader-orb {
-  width: 62px;
-  height: 62px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: linear-gradient(135deg,#fff,#d8b4fe,#f9a8d4);
-  box-shadow: 0 0 40px rgba(255,255,255,.65);
-  animation: orb 1.5s ease-in-out infinite;
-}
-
-@keyframes orb {
-  0%,100% { transform: scale(.9); }
-  50% { transform: scale(1.1); }
-}
-
-.loader-text {
-  color: #6d607d;
-  font-size: 12px;
-  letter-spacing: .18em;
-}
-
-body.dark .loader-text { color: #c9b9d8; }
-
-@media (max-width: 600px) {
-  .topbar { top: 14px; left: 14px; right: 14px; }
-  main { padding-top: 92px; }
-  .link-card { min-height: 64px; padding: 10px 14px; }
-  .link-icon { width: 40px; height: 40px; }
-  .avatar-wrap { width: 100px; height: 100px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-  }
-}
-  #loader {
   position: fixed;
   inset: 0;
   background: var(--glass-strong);
@@ -496,6 +414,7 @@ body.dark .loader-text { color: #c9b9d8; }
 #loader.hide {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .loader-content {
@@ -550,6 +469,22 @@ body.dark .loader-text { color: #c9b9d8; }
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+@media (max-width: 600px) {
+  .topbar { top: 14px; left: 14px; right: 14px; }
+  main { padding-top: 92px; }
+  .link-card { min-height: 64px; padding: 10px 14px; }
+  .link-icon { width: 40px; height: 40px; }
+  .avatar-wrap { width: 100px; height: 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 
@@ -558,15 +493,10 @@ body.dark .loader-text { color: #c9b9d8; }
 <!-- 載入畫面 -->
 <div id="loader">
   <div class="loader-content">
-    <!-- 名字與稱號 -->
     <h2 class="loader-name">華宮結 <span>/ Hanamiya Yui</span></h2>
-    
-    <!-- 自我介紹短文 -->
-    <p class="loader-bio">✨ 這裡是來自馬來西亞的個人勢Vtuber！感謝你願意點進來看我❤✨</p>
-    
-    <!-- 讀條動畫轉圈圈 -->
+    <p class="loader-bio" id="loaderBio">✨ 這裡是來自馬來西亞的個人勢Vtuber！感謝你願意點進來看我❤✨</p>
     <div class="spinner"></div>
-    <span class="loader-text">頁面載入中...</span>
+    <span class="loader-text" id="loaderText">頁面載入中...</span>
   </div>
 </div>
 
@@ -577,6 +507,8 @@ body.dark .loader-text { color: #c9b9d8; }
 <header class="topbar">
   <div class="brand">✦ LINK HUB</div>
   <div class="actions">
+    <!-- 語言切換按鈕 -->
+    <button class="icon-btn" id="langBtn" aria-label="切換語言">🌐</button>
     <button class="icon-btn" id="musicBtn" aria-label="播放或暫停音樂">🔇</button>
     <button class="icon-btn" id="themeBtn" aria-label="切換深色模式">🌙</button>
   </div>
@@ -590,21 +522,16 @@ body.dark .loader-text { color: #c9b9d8; }
     </div>
 
     <h1>華宮結 Hanamiya Yui</h1>
-
     <div class="subtitle">VTuber · Streamer · Content Creator</div>
-
-    <div class="bio">
-      歡迎來到我的小世界 ❄<br>
-    </div>
+    <div class="bio" id="bioText">歡迎來到我的小世界 ❄<br></div>
   </section>
 
   <section class="links">
-
     <a class="link-card" href="https://www.youtube.com/@HanamiyaYui" target="_blank" rel="noopener">
       <div class="link-icon">🎥</div>
       <div class="link-info">
         <span class="link-title">YouTube</span>
-        <span class="link-desc">觀看我的影片與直播</span>
+        <span class="link-desc" id="ytDesc">觀看我的影片與直播</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -613,7 +540,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-icon">🎮</div>
       <div class="link-info">
         <span class="link-title">Twitch</span>
-        <span class="link-desc">來一起挂台！</span>
+        <span class="link-desc" id="twitchDesc">來一起挂台！</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -622,7 +549,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-icon">📷</div>
       <div class="link-info">
         <span class="link-title">Instagram</span>
-        <span class="link-desc">照片、限時動態與日常</span>
+        <span class="link-desc" id="igDesc">照片、限時動態與日常</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -631,7 +558,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-icon">🐦</div>
       <div class="link-info">
         <span class="link-title">X / Twitter</span>
-        <span class="link-desc">最新消息與日常</span>
+        <span class="link-desc" id="xDesc">最新消息與日常</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -640,7 +567,7 @@ body.dark .loader-text { color: #c9b9d8; }
       <div class="link-icon">💬</div>
       <div class="link-info">
         <span class="link-title">Discord</span>
-        <span class="link-desc">加入我的社群</span>
+        <span class="link-desc" id="dcDesc">加入我的社群</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
@@ -648,12 +575,11 @@ body.dark .loader-text { color: #c9b9d8; }
     <a class="link-card" href="https://ganknow.com/%E8%8F%AF%E5%AE%AE%E7%B5%90hanamiyayui/tip" target="_blank" rel="noopener">
       <div class="link-icon">🎁</div>
       <div class="link-info">
-        <span class="link-title">贊助我</span>
-        <span class="link-desc">支持我的創作活動</span>
+        <span class="link-title" id="donateTitle">贊助我</span>
+        <span class="link-desc" id="donateDesc">支持我的創作活動</span>
       </div>
       <div class="link-arrow">›</div>
     </a>
-
   </section>
 
   <div class="socials">
@@ -670,14 +596,91 @@ body.dark .loader-text { color: #c9b9d8; }
 </audio>
 
 <script>
-/* 1. 載入動畫（已將停留時間改為 2 秒） */
+/* 1. 語言設定與資料 */
+const translations = {
+  zh: {
+    loaderBio: '✨ 這裡是來自馬來西亞的個人勢Vtuber！感謝你願意點進來看我❤✨',
+    loaderText: '頁面載入中...',
+    bioText: '歡迎來到我的小世界 ❄',
+    ytDesc: '觀看我的影片與直播',
+    twitchDesc: '來一起挂台！',
+    igDesc: '照片、限時動態與日常',
+    xDesc: '最新消息與日常',
+    dcDesc: '加入我的社群',
+    donateTitle: '贊助我',
+    donateDesc: '支持我的創作活動'
+  },
+  en: {
+    loaderBio: '✨ Indie VTuber from Malaysia! Thank you for stopping by! ❤✨',
+    loaderText: 'Loading page...',
+    bioText: 'Welcome to my little world ❄',
+    ytDesc: 'Watch my videos and streams',
+    twitchDesc: 'Come hangout with me!',
+    igDesc: 'Photos, stories, and daily life',
+    xDesc: 'Latest updates and tweets',
+    dcDesc: 'Join my Discord community',
+    donateTitle: 'Donate',
+    donateDesc: 'Support my content creation'
+  },
+  ja: {
+    loaderBio: '✨ マレーシア出身の個人勢VTuberです！見に来てくれてありがとう❤✨',
+    loaderText: 'ページを読み込み中...',
+    bioText: '私の小さな世界へようこそ ❄',
+    ytDesc: '動画や配信をチェック！',
+    twitchDesc: '配信に遊びに来てね！',
+    igDesc: '写真、ストーリーズ、日常',
+    xDesc: '最新情報と日常の呟き',
+    dcDesc: 'コミュニティに参加する',
+    donateTitle: '活動を応援',
+    donateDesc: '活動のサポートはこちら'
+  }
+};
+
+const langOrder = ['zh', 'en', 'ja'];
+let currentLangIndex = 0;
+
+function updateLanguage(lang) {
+  const t = translations[lang];
+  document.getElementById('loaderBio').textContent = t.loaderBio;
+  document.getElementById('loaderText').textContent = t.loaderText;
+  document.getElementById('bioText').innerHTML = t.bioText + '<br>';
+  document.getElementById('ytDesc').textContent = t.ytDesc;
+  document.getElementById('twitchDesc').textContent = t.twitchDesc;
+  document.getElementById('igDesc').textContent = t.igDesc;
+  document.getElementById('xDesc').textContent = t.xDesc;
+  document.getElementById('dcDesc').textContent = t.dcDesc;
+  document.getElementById('donateTitle').textContent = t.donateTitle;
+  document.getElementById('donateDesc').textContent = t.donateDesc;
+  
+  // 設置按鈕圖示與 HTML 語言標籤
+  const langLabels = { zh: '🌐 繁', en: '🌐 EN', ja: '🌐 JP' };
+  document.getElementById('langBtn').textContent = langLabels[lang];
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : lang;
+}
+
+// 載入時檢查先前設定
+const savedLang = localStorage.getItem('language');
+if (savedLang && langOrder.includes(savedLang)) {
+  currentLangIndex = langOrder.indexOf(savedLang);
+}
+updateLanguage(langOrder[currentLangIndex]);
+
+// 點擊切換語言
+document.getElementById('langBtn').addEventListener('click', () => {
+  currentLangIndex = (currentLangIndex + 1) % langOrder.length;
+  const newLang = langOrder[currentLangIndex];
+  localStorage.setItem('language', newLang);
+  updateLanguage(newLang);
+});
+
+/* 2. 載入動畫（停留 1.5 秒後淡出） */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
-  }, 1500); // 💡 2000 代表 2 秒（若想更久可改成 3000 表示 3 秒）
+  }, 1500);
 });
 
-/* 2. 深色／淺色模式 */
+/* 3. 深色／淺色模式 */
 const themeBtn = document.getElementById('themeBtn');
 
 if (localStorage.getItem('theme') === 'dark') {
@@ -692,11 +695,9 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-/* 3. 背景音樂 */
+/* 4. 背景音樂 */
 const bgm = document.getElementById('bgm');
 const musicBtn = document.getElementById('musicBtn');
-
-// 控制初始音量為 20%
 bgm.volume = 0.2;
 
 musicBtn.addEventListener('click', () => {
@@ -712,7 +713,7 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
-/* 4. 滑鼠跟隨發光 */
+/* 5. 滑鼠跟隨發光 */
 const glow = document.getElementById('glow');
 
 window.addEventListener('pointermove', (e) => {
@@ -728,7 +729,7 @@ window.addEventListener('pointerenter', () => {
   glow.style.opacity = '1';
 });
 
-/* 5. 浮動粒子 */
+/* 6. 浮動粒子 */
 const particles = document.getElementById('particles');
 
 for (let i = 0; i < 35; i++) {
@@ -746,7 +747,7 @@ for (let i = 0; i < 35; i++) {
   particles.appendChild(p);
 }
 
-/* 6. 飄落雪花效果 */
+/* 7. 飄落雪花效果 */
 for (let i = 0; i < 30; i++) {
   const flake = document.createElement('div');
   flake.className = 'snowflake';
